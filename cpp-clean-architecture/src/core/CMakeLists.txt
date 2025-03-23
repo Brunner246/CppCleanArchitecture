@@ -15,7 +15,7 @@ target_include_directories(${PROJECT_NAME}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         PRIVATE
-        ${CMAKE_SOURCE_DIR}/cpp-clean-architecture/src # Use this root path instead
+        ${CMAKE_SOURCE_DIR}/cpp-clean-architecture/src
 )
 
 

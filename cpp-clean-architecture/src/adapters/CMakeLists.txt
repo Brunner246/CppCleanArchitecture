@@ -5,14 +5,27 @@ include(GenerateExportHeader)
 find_package(Crow CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 
-add_library(${PROJECT_NAME} SHARED)
+#set(HEADER_FILES
+#        user_adapter.hpp
+#        crow_adapter.hpp
+#)
+#
+#set(SOURCE_FILES PRIVATE
+#        user_adapter.cpp
+#        crow_adapter.cpp
+#)
+
+add_library(Adapters SHARED)
 
 target_sources(${PROJECT_NAME}
         PUBLIC
         user_adapter.hpp
+        crow_adapter.hpp
         PRIVATE
         user_adapter.cpp
+        crow_adapter.cpp
 )
+
 
 message("CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
 
@@ -21,7 +34,7 @@ target_include_directories(${PROJECT_NAME}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         PRIVATE
-        ${CMAKE_SOURCE_DIR}/cpp-clean-architecture/src # Use this root path instead
+        ${CMAKE_SOURCE_DIR}/cpp-clean-architecture/src
 )
 
 generate_export_header(${PROJECT_NAME}

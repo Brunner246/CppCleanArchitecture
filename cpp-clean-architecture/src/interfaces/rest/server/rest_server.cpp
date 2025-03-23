@@ -1,8 +1,10 @@
 #include "rest_server.hpp"
 #include <iostream>
 
-namespace interfaces::rest::server {
+#include "crow_adapter.hpp"
 
+
+namespace interfaces::rest::server {
     RestServer::RestServer(std::shared_ptr<UserService> userService)
         : userController(std::make_unique<rest::controllers::UserController>(userService)) {
 
@@ -14,10 +16,10 @@ namespace interfaces::rest::server {
                          crow::HTTPMethod::PUT, crow::HTTPMethod::Delete)
                 .origin("*");
 
-        userController->registerRoutes(app);
+        adapters::CrowAdapter::registerRoutes(app, *userController);
     }
 
-    void RestServer::start(const uint16_t port) {
+    void RestServer::start(const std::uint16_t port) {
         std::cout << "Starting REST server on port " << port << std::endl;
         app.port(port).multithreaded().run();
     }
