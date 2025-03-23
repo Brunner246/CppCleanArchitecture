@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
-#include "user.hpp"
+
+#include "domain/entities/user.hpp"
+
 
 TEST(UserTests, UserCreation) {
     const User user(1, "John Doe", "john.doe@example.com");

@@ -21,8 +21,8 @@ target_link_libraries(CleanArchitectureTests
 
 target_include_directories(console PRIVATE
         ${CMAKE_SOURCE_DIR}/cpp-clean-architecture/src
-        ${CMAKE_BINARY_DIR}/cpp-clean-architecture/src/core/include
-        ${CMAKE_BINARY_DIR}/cpp-clean-architecture/src/infrastructure/include
+#        ${CMAKE_BINARY_DIR}/cpp-clean-architecture/src/core/include
+#        ${CMAKE_BINARY_DIR}/cpp-clean-architecture/src/infrastructure/include
 )
 
 add_test(NAME UserTests COMMAND CleanArchitectureTests)

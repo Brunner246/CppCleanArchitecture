@@ -6,7 +6,7 @@
 #include "core/usecases/user_service.hpp"
 
 int main() {
-    const std::shared_ptr<UserRepository> userRepository = std::make_shared<InMemoryUserRepository>();
+    const std::shared_ptr<UserRepository> userRepository = std::make_shared<infrastructure::persistence::InMemoryUserRepository>();
     const UserService userService(userRepository);
 
     userRepository->addUser(User(1, "Alice", "alice@example.com"));

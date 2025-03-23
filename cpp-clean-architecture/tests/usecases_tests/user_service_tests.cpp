@@ -1,12 +1,14 @@
 #include <gtest/gtest.h>
 
-#include "in_memory_user_repository.hpp"
-#include "user_service.hpp"
+#include "domain/entities/user.hpp"
+#include "domain/repositories/user_repository.hpp"
+#include "persistence/in_memory_user_repository.hpp"
+#include "usecases/user_service.hpp"
 
 
 class UserServiceTests : public ::testing::Test {
 protected:
-    std::shared_ptr<UserRepository> userRepository = std::make_shared<InMemoryUserRepository>();
+    std::shared_ptr<UserRepository> userRepository = std::make_shared<infrastructure::persistence::InMemoryUserRepository>();
     UserService userService{userRepository};
 
     void SetUp() override {

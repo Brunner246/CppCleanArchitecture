@@ -16,3 +16,15 @@ std::vector<User> UserService::getAllUsers() const {
 std::optional<User> UserService::getUserById(const int id) const {
     return this->userRepository->findUserById(id);
 }
+
+void UserService::createUser(const User &user) const {
+    this->userRepository->addUser(user);
+}
+
+std::optional<User> UserService::updateUser(const User &user) const {
+    return this->userRepository->updateUser(user);
+}
+
+bool UserService::deleteUser(const User &user) const {
+    return this->userRepository->deleteUser(user.getId());
+}

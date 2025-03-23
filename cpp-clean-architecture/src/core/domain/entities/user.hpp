@@ -2,7 +2,7 @@
 #define USER_HPP
 
 #include <string>
-#include "core_export.h"
+#include "include/core_export.h"
 
 class CORE_API User {
 public:

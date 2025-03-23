@@ -3,20 +3,31 @@
 
 #include <vector>
 #include <optional>
-#include <user_repository.hpp>
-#include <user.hpp>
-#include "infrastructure_export.h"
 
-class INFRASTRUCTURE_API InMemoryUserRepository final : public UserRepository {
-public:
-    void addUser(const User &user) override;
+#include "core/domain/entities/user.hpp"
+#include "domain/repositories/user_repository.hpp"
 
-    [[nodiscard]] std::optional<User> findUserById(int id) const override;
+#include "include/Infrastructure_export.h"
 
-    [[nodiscard]] std::vector<User> findAllUsers() const override;
+namespace infrastructure::persistence
+{
+    class INFRASTRUCTURE_API InMemoryUserRepository final : public UserRepository {
+    public:
+        void addUser(const User &user) override;
 
-private:
-    std::vector<User> users_;
-};
+        [[nodiscard]] std::optional<User> findUserById(int id) const override;
+
+        [[nodiscard]] std::vector<User> findAllUsers() const override;
+
+        User updateUser(const User &user) override;
+
+        bool deleteUser(int id) override;
+
+    private:
+        std::vector<User> users_;
+    };
+
+}
+
 
 #endif // IN_MEMORY_USER_REPOSITORY_HPP

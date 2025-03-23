@@ -1,11 +1,12 @@
 #include <gtest/gtest.h>
 
-#include "in_memory_user_repository.hpp"
+#include "domain/entities/user.hpp"
+#include "persistence/in_memory_user_repository.hpp"
 
 
 class InMemoryUserRepositoryTests : public ::testing::Test {
 protected:
-    InMemoryUserRepository userRepository;
+    infrastructure::persistence::InMemoryUserRepository userRepository;
 
     void SetUp() override {
         userRepository.addUser(User(1, "John Doe", "john@example.com"));
