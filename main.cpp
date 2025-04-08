@@ -1,7 +1,6 @@
 #include <iostream>
 
 /*
-*The Visitor pattern is more appropriate here than the Strategy pattern because:
 
 1. **Multiple operations on fixed structure**: Visitor excels when you have different operations (JSON export, serialization)
 that need to be performed on a fixed class hierarchy (Document).
@@ -25,10 +24,9 @@ class Document {
 public:
     virtual ~Document() = default;
 
-    // Accept a visitor instead of having format-specific methods
     virtual void accept(class DocumentVisitor &visitor) const = 0;
 
-    // Document core functionality methods go here...
+    // Document core functionality methods...
 };
 
 // DocumentVisitor.hpp
